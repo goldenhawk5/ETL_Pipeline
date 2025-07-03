@@ -5,7 +5,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 import os
 
-# --- LOAD ENVIRONMENT VARIABLES 
+# ENVIRONMENT VARIABLES    
 load_dotenv()
 
 QUICKNODE_URL = os.getenv("QUICKNODE_URL")
@@ -43,7 +43,7 @@ for tx in latest_block.transactions:
     from_address = tx["from"]
     to_address = tx["to"] if tx["to"] else None
     block_number = tx.blockNumber
-    value = web3.fromWei(tx.value, 'ether')
+    value = web3.from_wei(tx.value, 'ether')
     gas = tx.gas
     block = web3.eth.get_block(tx.blockNumber)
     timestamp = datetime.fromtimestamp(block.timestamp)
