@@ -13,7 +13,7 @@ DB_URI = os.getenv("DB_URI")
 
 # --- CONNECT TO WEB3 ---
 web3 = Web3(Web3.HTTPProvider(QUICKNODE_URL))
-assert web3.isConnected(), "Failed to connect to QuickNode"
+assert web3.is_Connected(), "Failed to connect to QuickNode"
 
 # --- GET LATEST BLOCK ---
 latest_block = web3.eth.get_block("latest", full_transactions=True)
