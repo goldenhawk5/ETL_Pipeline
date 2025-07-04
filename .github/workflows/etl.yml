@@ -2,7 +2,7 @@ name: Run Arbitrum ETL
 
 on:
   schedule:
-    - cron: '*/15 * * * *'  # every 15 minutes
+    - cron: '*/30 * * * *'  # every 30 minutes
   workflow_dispatch:        # allow manual trigger
 
 jobs:
@@ -14,16 +14,19 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+        # Sets up Python environment
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
+        # Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+        # Run the ETL script
       - name: Run script
         env:
           QUICKNODE_URL: ${{ secrets.QUICKNODE_URL }}
